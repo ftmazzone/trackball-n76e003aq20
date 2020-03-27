@@ -8,7 +8,7 @@ describe('index', function () {
     describe("constructor", function () {
 
         beforeEach(function () {
-            Trackball = require('../index').Trackball;
+            Trackball = require('../lib/index').Trackball;
         });
 
         it('Check that the class Trackball is initialised', function () {
@@ -35,7 +35,7 @@ describe('index', function () {
     describe("turnOn", function () {
 
         beforeEach(function () {
-            Trackball = rewire('../index');
+            Trackball = rewire('../lib/index');
         });
 
         it('default refresh rate', async function () {
@@ -166,7 +166,7 @@ describe('index', function () {
     describe('setColour', function () {
 
         beforeEach(function () {
-            Trackball = require('../index').Trackball;
+            Trackball = require('../lib/index').Trackball;
         });
 
         it('default colour', async function () {
@@ -206,7 +206,7 @@ describe('index', function () {
     describe('setContrast', function () {
 
         beforeEach(function () {
-            Trackball = require('../index').Trackball;
+            Trackball = require('../lib/index').Trackball;
         });
 
         it('75%', async function () {
@@ -234,7 +234,7 @@ describe('index', function () {
     describe('readInputs', function () {
 
         beforeEach(function () {
-            Trackball = require('../index').Trackball;
+            Trackball = require('../lib/index').Trackball;
         });
 
         it('state update (click)', async function () {
@@ -304,7 +304,7 @@ describe('index', function () {
     describe('writeByte', function () {
 
         beforeEach(function () {
-            Trackball = require('../index').Trackball;
+            Trackball = require('../lib/index').Trackball;
         });
 
         it('ok', async function () {
@@ -326,7 +326,7 @@ describe('index', function () {
     describe('readByte', function () {
 
         beforeEach(function () {
-            Trackball = require('../index').Trackball;
+            Trackball = require('../lib/index').Trackball;
         });
 
         it('readByte', async function () {
@@ -371,7 +371,7 @@ describe('index', function () {
     describe('convertHexColourToRgb', function () {
 
         beforeEach(function () {
-            Trackball = require('../index').Trackball;
+            Trackball = require('../lib/index').Trackball;
         });
 
         it('valid colour', async function () {
@@ -403,7 +403,7 @@ describe('index', function () {
     describe('convertRgbToRgbw', function () {
 
         beforeEach(function () {
-            Trackball = require('../index').Trackball;
+            Trackball = require('../lib/index').Trackball;
         });
 
         it('custom', async function () {
@@ -500,7 +500,7 @@ describe('index', function () {
     describe('convertRgbToRgbw', function () {
 
         beforeEach(function () {
-            Trackball = require('../index').Trackball;
+            Trackball = require('../lib/index').Trackball;
         });
 
         it('white', async function () {
