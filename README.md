@@ -9,7 +9,7 @@ Node.js module for reading the [Pimoroni trackball](https://shop.pimoroni.com/pr
 ## Prerequisites
 ### Wiring
 
-| SSD1351 pin    |Raspberry Pi pin|Raspberry Pi GPIO|
+| device pin    |Raspberry Pi pin|Raspberry Pi GPIO|
 |----------------|:---------------|:----------------|
 | GND            |   6            |                 |
 | INT            |                |                 |
