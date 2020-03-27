@@ -4,7 +4,7 @@ Node.js module for reading the [Pimoroni trackball](https://shop.pimoroni.com/pr
 
 [![pipeline status](https://gitlab.com/ftmazzone/trackball-N76E003AQ20/badges/master/pipeline.svg)](https://gitlab.com/ftmazzone/trackball-N76E003AQ20/-/commits/master)
 [![coverage report](https://gitlab.com/ftmazzone/trackball-N76E003AQ20/badges/master/coverage.svg)](https://gitlab.com/ftmazzone/trackball-N76E003AQ20/commits/master)
-[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=trackball-n76e003aq20&metric=alert_status&style=flat-square)](https://sonarcloud.io/dashboard?id=trackball-n76e003aq20)
+[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=ftmazzone_trackball-n76e003aq20&metric=alert_status&style=flat-square)](https://sonarcloud.io/dashboard?id=ftmazzone_trackball-n76e003aq20)
 
 ## Prerequisites
 ### Wiring
