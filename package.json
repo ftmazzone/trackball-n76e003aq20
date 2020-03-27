@@ -1,0 +1,62 @@
+{
+  "name": "trackball-n76e003aq20",
+  "version": "0.0.1",
+  "description": "Library to use and control the pimoroni trackball breakout.",
+  "main": "index.js",
+  "scripts": {
+    "coverage": "npx nyc mocha '**/unitTests/*.js'",
+    "test": "npx mocha '**/unitTests/*.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/ftmazzone/trackball-n76e003aq20"
+  },
+  "author": "Florent Mazzone",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/ftmazzone/trackball-n76e003aq20/issues"
+  },
+  "homepage": "https://gitlab.com/ftmazzone/trackball-n76e003aq20#readme",
+  "keywords": [
+    "trackball",
+    "i2c",
+    "raspberry-pi",
+    "N76E003AQ20",
+    "pimoroni"
+  ],
+  "dependencies": {
+    "i2c-bus": "^5.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.1.1",
+    "nodemon": "^2.0.2",
+    "nyc": "^15.0.0",
+    "rewire": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=12.0.0 <13.0.0"
+  },
+  "files": [
+    "index.js"
+  ],
+  "nyc": {
+    "exclude": [
+      "node_modules/**",
+      "examples/"
+    ],
+    "check-coverage": true,
+    "all": true,
+    "report-dir": ".nyc_output/reports",
+    "temp-directory": ".nyc_output/",
+    "reporter": [
+      "lcov",
+      "text-summary",
+      "html"
+    ],
+    "statements": 100,
+    "branches": 100,
+    "functions": 100,
+    "lines": 100
+  }
+}
