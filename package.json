@@ -2,7 +2,7 @@
   "name": "trackball-n76e003aq20",
   "version": "0.0.1",
   "description": "Library to use and control the pimoroni trackball breakout.",
-  "main": "index.js",
+  "main": "./lib",
   "scripts": {
     "coverage": "npx nyc mocha '**/unitTests/*.js'",
     "test": "npx mocha '**/unitTests/*.js'"
@@ -38,7 +38,7 @@
     "node": ">=12.0.0 <13.0.0"
   },
   "files": [
-    "index.js"
+    "lib/"
   ],
   "nyc": {
     "exclude": [

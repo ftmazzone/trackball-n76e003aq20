@@ -1,6 +1,6 @@
 'use strict';
 
-const { Trackball } = require('../index.js');
+const { Trackball } = require('../lib/index.js');
 let trackball;
 
 function handleStateUpdate(inputs) {
