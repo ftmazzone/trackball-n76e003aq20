@@ -9,7 +9,7 @@ Node.js module for reading the [Pimoroni trackball](https://shop.pimoroni.com/pr
 ## Prerequisites
 ### Wiring
 
-| device pin    |Raspberry Pi pin|Raspberry Pi GPIO|
+| Device pin    |Raspberry Pi pin|Raspberry Pi GPIO|
 |----------------|:---------------|:----------------|
 | GND            |   6            |                 |
 | INT            |                |                 |
