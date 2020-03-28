@@ -20,7 +20,7 @@ Node.js module for reading the [Pimoroni trackball](https://shop.pimoroni.com/pr
 ### Installation
 
 ```sh
-npm install trackball-n76e003aq20
+npm install pim447-trackball
 ```
 
 ## Available Properties
