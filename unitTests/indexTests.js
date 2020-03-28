@@ -67,7 +67,7 @@ describe('index', function () {
             assert.deepEqual(openPromisifiedParams, [1]);
             assert.deepEqual(readByteParams, [0xFA, 0x02]);
             assert.deepEqual(setContrastParams, [0]);
-            assert.equal(trackball.refreshRate, 50);
+            assert.equal(trackball.refreshInterval, 50);
         });
 
         it('custom refresh rate', async function () {
@@ -99,7 +99,7 @@ describe('index', function () {
             assert.deepEqual(openPromisifiedParams, [1]);
             assert.deepEqual(readByteParams, [0xFA, 0x02]);
             assert.deepEqual(setContrastParams, [0]);
-            assert.equal(trackball.refreshRate, 125);
+            assert.equal(trackball.refreshInterval, 125);
         });
 
         it('invalid chip id - BE', async function () {
@@ -227,6 +227,29 @@ describe('index', function () {
             //Assert
             assert.deepEqual(writeByteParams, [[0, 0x7F], [1, 0x7F], [2, 0x7F], [3, 0x7F]]);
             assert.deepEqual(trackball.Contrast, 0x7F)
+        });
+
+    });
+
+    describe('setRefreshInterval', function () {
+
+        beforeEach(function () {
+            Trackball = require('../lib/index').Trackball;
+        });
+
+        it('123 ms', async function () {
+            //Prepare
+            const trackball = new Trackball();
+
+            //Act
+            trackball.RefreshInterval = 123;
+
+            //Assert
+            assert.equal(trackball.readInputInterval.constructor.name,'Timeout');
+            assert.equal(trackball.readInputInterval._idleTimeout, 123);
+            assert.equal(trackball.RefreshInterval, trackball.readInputInterval._idleTimeout);
+            assert.equal(trackball.RefreshInterval, trackball.RefreshInterval);
+            clearInterval(trackball.readInputInterval);
         });
 
     });
@@ -466,7 +489,7 @@ describe('index', function () {
             const result = Trackball.convertRgbToRgbw(0x01, 0xFFF, 0xFFF);
 
             //Assert
-            assert.deepEqual(result, { r: 0x00 ,g: 0xFF, b: 0xFF, w: 0x01 });
+            assert.deepEqual(result, { r: 0x00, g: 0xFF, b: 0xFF, w: 0x01 });
         });
 
         it('no green', async function () {

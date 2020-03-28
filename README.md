@@ -45,6 +45,16 @@ await trackball.setContrast(0x0A);
 trackball.Contrast // Returns 10
 ```
 
+### RefreshInterval
+
+Returns the current refresh interval in milliseconds of the cursor and click events.
+
+Usage:
+```javascript
+trackball.RefreshInterval = 50;
+trackball.RefreshInterval // Returns 50
+```
+
 ## Available Methods
 
 ### convertHexColourToRgb(hexcolour) - static
