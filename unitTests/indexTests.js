@@ -245,7 +245,7 @@ describe('index', function () {
             trackball.RefreshInterval = 123;
 
             //Assert
-            assert.equal(trackball.readInputInterval.constructor.name,'Timeout');
+            assert.equal(trackball.readInputInterval.constructor.name, 'Timeout');
             assert.equal(trackball.readInputInterval._idleTimeout, 123);
             assert.equal(trackball.RefreshInterval, trackball.readInputInterval._idleTimeout);
             assert.equal(trackball.RefreshInterval, trackball.RefreshInterval);
@@ -334,6 +334,7 @@ describe('index', function () {
             //Prepare
             const wireWriteByteParams = [];
             const trackball = new Trackball();
+            trackball.enabled = true;
             trackball.wire = {
                 writeByte: (...params) => { wireWriteByteParams.push(params); }
             };
@@ -343,6 +344,21 @@ describe('index', function () {
 
             //Assert
             assert.deepEqual(wireWriteByteParams, [[0x0A, 0x01, 0x02]]);
+        });
+
+        it('turned off', async function () {
+            //Prepare
+            let warningMessage;
+            const trackball = new Trackball();
+
+            console.warn = message => warningMessage = message;
+
+            //Act
+            const result = await trackball.writeByte(0x01, 0x02);
+
+            //Assert
+            assert.isFalse(result);
+            assert.equal(warningMessage, 'writeByte warning - trackball is turned off');
         });
     });
 
@@ -356,6 +372,7 @@ describe('index', function () {
             //Prepare
             const wireReadByteParams = [];
             const trackball = new Trackball();
+            trackball.enabled = true;
             trackball.wire = {
                 readByte: (...params) => {
                     wireReadByteParams.push(params);
@@ -375,6 +392,7 @@ describe('index', function () {
             //Prepare
             const wirereadI2cBlockParams = [];
             const trackball = new Trackball();
+            trackball.enabled = true;
             trackball.wire = {
                 readI2cBlock: (...params) => {
                     wirereadI2cBlockParams.push(params);
@@ -388,6 +406,21 @@ describe('index', function () {
             //Assert
             assert.deepEqual(result, Buffer.from([0x01, 0x2]));
             assert.deepEqual(wirereadI2cBlockParams, [[0x0A, [0x03, 0x04], 0x2, Buffer.alloc(2)]]);
+        });
+
+        it('turned off', async function () {
+            //Prepare
+            let warningMessage;
+            const trackball = new Trackball();
+
+            console.warn = message => warningMessage = message;
+
+            //Act
+            const result = await trackball.readByte(0x01,1);
+
+            //Assert
+            assert.isFalse(result);
+            assert.equal(warningMessage, 'readByte warning - trackball is turned off');
         });
     });
 
