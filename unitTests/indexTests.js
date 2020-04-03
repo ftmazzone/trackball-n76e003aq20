@@ -322,6 +322,28 @@ describe('index', function () {
             //Assert
             assert.deepEqual(readByteParams, [[4, 5]]);
         });
+
+        it('exception', async function () {
+            //Prepare
+            const readByteParams = [];
+            const myReadInputError = new Error('myReadInputException');
+            let errorMessage;
+
+            const trackball = new Trackball();
+            trackball.readByte = (...params) => {
+                readByteParams.push(params);
+                throw myReadInputError;
+            };
+
+            console.error = (...message) => errorMessage = message;
+
+            //Act
+            await trackball.readInputs();
+
+            //Assert
+            assert.deepEqual(readByteParams, [[4, 5]]);
+            assert.deepEqual(errorMessage, ['readInputs error',myReadInputError]);
+        });
     });
 
     describe('writeByte', function () {
@@ -416,7 +438,7 @@ describe('index', function () {
             console.warn = message => warningMessage = message;
 
             //Act
-            const result = await trackball.readByte(0x01,1);
+            const result = await trackball.readByte(0x01, 1);
 
             //Assert
             assert.isFalse(result);
