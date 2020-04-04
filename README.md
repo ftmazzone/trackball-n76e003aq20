@@ -159,6 +159,37 @@ async function initialize() {
 }
 ```
 
+### error
+
+Catches any trackball error(s). The catched errors can be processed by a custom error handler. 
+The error is of type 'TrackballError'.
+
+Event format:
+```javascript
+    {
+        message: 'message', //trackball error message
+        code: 'code', //trackball error code
+        innerError: TrackballError, //trackball error that caused the current error (optional)
+    }
+```
+
+Usage:
+```javascript
+function handleError(trackballError) {
+    console.error(trackballError);
+}
+
+async function initialize() {
+    trackball = new Trackball();
+    await trackball.turnOn(); 
+
+    trackball.once('error', handleError); //enable the event listening
+
+    console.info('Click or move the cursor to trigger some events');
+
+}
+```
+
 
 ## Credits
 
