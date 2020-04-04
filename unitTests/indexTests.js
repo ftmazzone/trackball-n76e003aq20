@@ -342,7 +342,36 @@ describe('index', function () {
 
             //Assert
             assert.deepEqual(readByteParams, [[4, 5]]);
-            assert.deepEqual(errorMessage, ['readInputs error',myReadInputError]);
+            assert.deepEqual(errorMessage, ['readInputs error', myReadInputError]);
+        });
+
+        it('exception - with error handler', async function () {
+            //Prepare
+            const TrackballError = require('../lib/index').TrackballError;
+            const readByteParams = [], errorHandlerParams = [];
+            const myReadInputError = new Error('myReadInputException');
+
+            const trackball = new Trackball();
+            trackball.readByte = (...params) => {
+                readByteParams.push(params);
+                throw myReadInputError;
+            };
+
+            trackball.once('error', async (params) => {
+                errorHandlerParams.push(params);
+                await trackball.turnOff();
+            });
+
+            //Act
+            await trackball.readInputs();
+
+            //Assert
+            assert.deepEqual(readByteParams, [[4, 5]]);
+            assert.deepEqual(errorHandlerParams.length, 1);
+            assert.deepEqual(errorHandlerParams[0].constructor.name, 'TrackballError');
+            assert.deepEqual(errorHandlerParams[0].message, 'readInputs error');
+            assert.deepEqual(errorHandlerParams[0].code, 'readInputError');
+            assert.deepEqual(errorHandlerParams[0].innerError, myReadInputError);
         });
     });
 
